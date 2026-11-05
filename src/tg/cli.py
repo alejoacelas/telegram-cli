@@ -67,7 +67,9 @@ def client_from_env() -> TelegramClient:
     if missing:
         raise TgError(f"missing {', '.join(missing)}; run tg through bin/tg, which loads them from 1Password")
     return TelegramClient(StringSession(os.environ["TG_SESSION"]), int(os.environ["TG_API_ID"]),
-                          os.environ["TG_API_HASH"], receive_updates=False, flood_sleep_threshold=120)
+                          os.environ["TG_API_HASH"], receive_updates=False, flood_sleep_threshold=120,
+                          # Telegram's Devices list shows the name from the latest connection.
+                          device_model=os.environ.get("TG_DEVICE", "tg-cli"), app_version="tg-cli 0.1")
 
 
 def out(args, rows, text):

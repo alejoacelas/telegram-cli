@@ -24,7 +24,8 @@ WRITE = {"send", "mark-read", "archive", "unarchive", "archive-joined", "joined-
 
 
 def parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="tg", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p = argparse.ArgumentParser(prog="tg", description=__doc__, allow_abbrev=False,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--json", action="store_true", help="print JSON instead of text")
     p.add_argument("--write", action="store_true", help="allow commands that change your account")
     sub = p.add_subparsers(dest="command", required=True, metavar="COMMAND")

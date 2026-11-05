@@ -1,0 +1,12 @@
+#!/bin/sh
+# Run tg with its credentials loaded from this machine's 1Password vault (env/mac.env or env/server.env).
+set -eu
+# op-agent and uv live here on the Mac and the server; the broker runs this with a bare PATH.
+PATH="$HOME/.local/bin:$HOME/best/stash/dotfiles/bin:$PATH"
+here=$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)
+case "$(uname -s)" in
+  Darwin) machine=mac ;;
+  Linux) machine=server ;;
+  *) echo "tg: unsupported operating system" >&2; exit 1 ;;
+esac
+exec op-agent run --env-file "$here/env/$machine.env" -- uv run --quiet --project "$here" tg "$@"

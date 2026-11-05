@@ -1,2 +1,4 @@
 def main() -> None:
-    print("Hello from tg!")
+    from .cli import main as run
+
+    run()

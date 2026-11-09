@@ -30,6 +30,6 @@ made from the Mac without scanning: add `--code-via-session --vault server-agent
 
 ## Agent server
 
-The `agent` user runs `tg` through the credential broker (`~/best/stash/server`), which runs
+The `agent` user runs `tg` through the credential broker (`~/best/areas/server`), which runs
 `bin/tg` as `alejo` from the checkout `~/work/telegram-cli` and allows only the `READ`
 commands. Deploy with `git pull` in that checkout.

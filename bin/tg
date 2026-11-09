@@ -2,7 +2,7 @@
 # Run tg with its credentials loaded from this machine's 1Password vault (env/mac.env or env/server.env).
 set -eu
 # op-agent and uv live here on the Mac and the server; the broker runs this with a bare PATH.
-PATH="$HOME/.local/bin:$HOME/best/stash/dotfiles/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/best/areas/dotfiles/bin:$PATH"
 here=$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)
 case "$(uname -s)" in
   Darwin) machine=mac ;;
